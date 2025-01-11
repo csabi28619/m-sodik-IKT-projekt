@@ -1,0 +1,76 @@
+﻿<Window x:Class="IKT_projekt_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Adminisztrációs Alkalmazás" Height="450" Width="689">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFA104FF"/>
+            <GradientStop Color="#FFF0D7FF" Offset="0.697"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Margin="10,10,243,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" MinHeight="27.96" />
+            <RowDefinition Height="Auto" MinHeight="69.96" />
+            <RowDefinition Height="Auto" MinHeight="61.96" />
+            <RowDefinition Height="Auto" MinHeight="33.96" />
+            <RowDefinition Height="Auto" MinHeight="29.96" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="83" />
+            <ColumnDefinition Width="93*"/>
+            <ColumnDefinition Width="11*" />
+        </Grid.ColumnDefinitions>
+
+        <!--bevitel-->
+        <TextBlock Grid.Column="0" VerticalAlignment="Center" Height="16" Margin="0,0,45,0" ><Run Language="hu-hu" Text="Típus"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="TypeTextBox" Grid.Row="0" Grid.Column="1" Margin="5,5,6,5" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Height="16" Margin="0,0,45,0" ><Run Language="hu-hu" Text="Név"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="NameTextBox" Grid.Row="1" Grid.Column="1" Margin="5,5,6,5" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Height="16" Margin="0,0,45,0" ><Run Language="hu-hu" Text="Paraméterek"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="ParametersTextBox" Grid.Row="2" Grid.Column="1" Margin="5,5,6,5" />
+
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Height="16" Margin="0,0,45,0" ><Run Language="hu-hu" Text="Ár"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="PriceTextBox" Grid.Row="3" Grid.Column="1" Margin="5,5,6,5" />
+
+
+        <Button Content="Alkatrész hozzáadása" Grid.Row="4" Margin="5,5,6,5" Click="AddPartButton_Click" Grid.Column="1" />
+
+        <!--kereses(valami nem jo)-->
+        <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Height="16" Margin="0,0,45,0" ><Run Language="hu-hu" Text="Keresés (típus)"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="SearchTypeTextBox" Grid.Row="5" Grid.Column="1" Margin="5,5,6,5" />
+
+        <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Top" Height="16" Margin="2,10,50,0" ><Run Language="hu-hu" Text="Keresés (név)"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="SearchNameTextBox" Grid.Row="6" Grid.Column="1" Margin="5,10,6,42" />
+
+        <Button Content="Keresés" Margin="5,35,6,13" Click="SearchButton_Click" Grid.Row="6" Grid.Column="1" />
+
+        <!--learazos-->
+        <TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Margin="4,0,45,0" Height="16" ><Run Text=" "/><Run Language="hu-hu" Text="Leárazás (%)"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="DiscountTextBox" Grid.Row="7" Grid.Column="1" Margin="5,10,6,0" Height="17" VerticalAlignment="Top" />
+
+        <Button Content="Leárazás használata" Margin="5,32,6,10" Click="ApplyDiscountButton_Click" Grid.Column="1" Grid.Row="7" />
+
+        <!--statisztika-->
+        <Button Content="Statisztika" Grid.Row="8" Margin="5,7,6,7" Click="StatisticsButton_Click" Grid.Column="1" />
+
+        <!--alkatreszek-->
+        <Grid Width="205.996826923077" Height="322.64" Margin="32,6,-205,7" Grid.Column="2" Grid.RowSpan="9">
+            <ListBox x:Name="PartsListBox" Margin="0,3,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+         ScrollViewer.VerticalScrollBarVisibility="Auto" />
+        </Grid>
+    <Button Content="HTML generálása" Margin="5,6,6,4" Click="GenerateHtmlButton_Click" Grid.Column="1" Grid.Row="9" />
+
+        <Button Name="ClearButton" Content="Lista Törlése" Click="ClearButton_Click" HorizontalAlignment="Right" Margin="0,6,-192,4" Grid.Column="2" Grid.Row="9" Width="180"/>
+
+
+    </Grid>
+</Window>
