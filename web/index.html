@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Alkatrész Katalógus</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="web.js"></script>
+</head>
+<body>
+    <header>
+        <h1>PC Alkatrész Katalógus</h1>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Keresés...">
+        </div>
+    </header>
+
+    <nav>
+        <button onclick="showSection('catalog')">Katalógus</button>
+        <button onclick="showSection('compare')">Összehasonlítás</button>
+        <button onclick="showSection('request')">Új termék igénylése</button>
+    </nav>
+
+    <main>
+        <section id="catalog" class="active">
+            <div class="products-grid"></div>
+        </section>
+
+        <section id="compare">
+            <div class="compare-container">
+                <div class="compare-select">
+                    <select id="product1"></select>
+                    <select id="product2"></select>
+                    <button onclick="compareProducts()">Összehasonlítás</button>
+                </div>
+                <div class="compare-results"></div>
+            </div>
+        </section>
+
+        <section id="request">
+            <form id="requestForm">
+                <h2>Új termék igénylése</h2>
+                <input type="text" placeholder="Termék neve" required>
+                <textarea placeholder="Termék leírása" required></textarea>
+                <select required>
+                    <option value="">Válassz kategóriát</option>
+                    <option value="cpu">Processzor</option>
+                    <option value="gpu">Videókártya</option>
+                    <option value="ram">Memória</option>
+                </select>
+                <button type="submit">Igénylés küldése</button>
+            </form>
+            <div class="requests-container"></div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.search-container {
+    margin: 1rem 0;
+}
+
+#search {
+    padding: 0.5rem;
+    width: 80%;
+    max-width: 300px;
+}
+
+nav {
+    background: #f4f4f4;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav button {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+section {
+    display: none;
+    padding: 2rem;
+}
+
+section.active {
+    display: block;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.product-card.nvidia {
+    border-left: 5px solid #76b900;
+}
+
+.product-card.amd {
+    border-left: 5px solid #ed1c24;
+}
+
+.product-details {
+    display: none;
+    margin-top: 1rem;
+}
+
+.compare-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.compare-select {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.compare-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.better-value {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+#requestForm {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#requestForm input,
+#requestForm textarea,
+#requestForm select,
+#requestForm button {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.requests-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.request-card {
+    flex: 1 1 300px;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .compare-results {
+        grid-template-columns: 1fr;
+    }
+}
