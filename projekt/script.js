@@ -50,7 +50,15 @@ function placeOrder() {
 }
 
 let ratings = JSON.parse(localStorage.getItem('ratings')) || [];
-
+//magátol való betöltés
+document.addEventListener('DOMContentLoaded', () => {
+    const savedRatings = localStorage.getItem('ratings');
+    if (savedRatings) {
+        ratings = JSON.parse(savedRatings);
+        updateRatingsList();
+    }
+});
+//értékelés hozzáadása
 function addRating() {
     const ratingValue = document.getElementById('rating-select').value;
     const comment = document.getElementById('rating-comment').value;
@@ -94,6 +102,7 @@ function updateRatingsList() {
         ratingsList.appendChild(ratingElement);
     });
 }
+
 function clearRatings() {
     ratings = [];
     localStorage.removeItem('ratings');
@@ -105,11 +114,11 @@ function setupGamerConfig() {
     
     const gamerSetup = {
         ccase: 4,      // High-end case
-        Alaplap: 4,    // Best motherboard
-        CPU: 4,        // Xeon processor
+        Alaplap: 4,    // Best alaplap
+        CPU: 4,        // Xeon proceszor
         Memória: 4,    // High-end memory
         GPU: 4,        // Best GPU
-        Hattertar: 4,   // Fast storage
+        Hattertar: 4,   // Gyors tár
         monitor: 1,    // 4K monitor
         eger: 3       // 2000 dpi mouse
     };
@@ -121,12 +130,12 @@ function setupOfficeConfig() {
     clearSelections();
     
     const officeSetup = {
-        ccase: 1,      // Basic case
-        Alaplap: 1,    // normal motherboard
-        CPU: 3,        // i5 processor
+        ccase: 1,      // Alap case
+        Alaplap: 1,    // normál alaplap
+        CPU: 3,        // i5 proceszor
         Memória: 1,    // 8GB memory
-        GPU: 1,        // Basic GPU
-        Hattertar: 1,   // Basic storage
+        GPU: 1,        // Alap GPU
+        Hattertar: 1,   // Alap tár
         monitor: 2,    // 24 inch monitor
         eger: 2,      // 1000 dpi mouse
     };
@@ -151,3 +160,18 @@ function applySetup(setup) {
         }
     });
 }
+function search() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const components = document.querySelectorAll('.component');
+    
+    components.forEach(component => {
+        const text = component.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+            component.style.display = 'block';
+        } else {
+            component.style.display = 'none';
+        }
+    });
+}
+
+document.getElementById('searchInput').addEventListener('input', search);
