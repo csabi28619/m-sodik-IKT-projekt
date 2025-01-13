@@ -39,7 +39,7 @@ function updateSelection() {
 }
 
 function placeOrder() {
-    const requiredComponents = ['ccase', 'Alaplap', 'CPU', 'Memória', 'Hattertar', 'monitor']; // További szükséges alkatrészek hozzáadása
+    const requiredComponents = ['szhaz', 'Alaplap', 'CPU', 'Memória', 'Hattertar', 'monitor']; // További szükséges alkatrészek hozzáadása
     for (const component of requiredComponents) {
         if (!selectedComponents.some(item => item.name === component)) {
             alert(`Hiányzik: ${component}`);
@@ -113,7 +113,7 @@ function setupGamerConfig() {
     clearSelections();
     
     const gamerSetup = {
-        ccase: 4,      // High-end case
+        szhaz: 4,      // High-end számítógépház
         Alaplap: 4,    // Best alaplap
         CPU: 4,        // Xeon proceszor
         Memória: 4,    // High-end memory
@@ -130,7 +130,7 @@ function setupOfficeConfig() {
     clearSelections();
     
     const officeSetup = {
-        ccase: 1,      // Alap case
+        szhaz: 1,      // Alap számítógépház
         Alaplap: 1,    // normál alaplap
         CPU: 3,        // i5 proceszor
         Memória: 1,    // 8GB memory
@@ -175,3 +175,35 @@ function search() {
 }
 
 document.getElementById('searchInput').addEventListener('input', search);
+
+function placeOrder() {
+    const requiredComponents = ['szhaz', 'Alaplap', 'CPU', 'Memória', 'Hattertar', 'monitor'];
+    
+    for (const component of requiredComponents) {
+        if (!selectedComponents.some(item => item.name === component)) {
+            alert(`Hiányzik: ${component}`);
+            return;
+        }
+    }
+
+    // rendelésed szövege
+    let orderText = "Az Ön rendelése:\n\n";
+    selectedComponents.forEach(component => {
+        orderText += `${component.name}: ${component.price} Ft\n`;
+    });
+    orderText += `\nÖsszesen: ${totalPrice} Ft`;
+
+    // letöltési link generálása
+    const blob = new Blob([orderText], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'rendelesed.txt';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+
+    alert('Megrendelés leadva!');
+}
+
